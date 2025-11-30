@@ -28,8 +28,11 @@ Features:
 
 #include <iostream>
 
+
 int main () {
     //input: plaintext
+    std::cout << "Enter plaintext: ";
+    std::cin >> plaintext;
     //input: shift
     //output: ciphertext
 }
