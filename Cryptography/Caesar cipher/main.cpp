@@ -43,6 +43,19 @@ Hash map with the alphabet
         ...
         umap["Z"] = 26;
 
+Hash map lookup for each character in the plaintext: 
+    umap.find(key) -> find key in hash map
+    umap[key] -> return value of key
+    Put value in array OR retrun the value shiftNumber from the value (?) 
+
+
+Convert char to int:
+    int asciiValue = char
+    A would be 65 -> 65 - 64 = 1
+    B would be 66 -> 2
+    OR just work with the ASCII values for the cipher logic (?) 
+    If so remember that CAPS and lowcase differ in values (by a lot)
+    Would not need hash map? Just shift the ASCII value with the shiftNumber?
 */
 
 #include <iostream>
