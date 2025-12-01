@@ -85,20 +85,15 @@ Clean the input:
 #include <algorithm>
 #include <cctype>
 
-std::string getInput(){
+std::string capitalizeInput(){
     //input: plaintext
     std::string plaintext;
     std::cout << "Enter plaintext: ";
     std::cin >> plaintext;
     std::transform(plaintext.begin(), plaintext.end(), plaintext.begin(),
                    [](unsigned char c){ return std::toupper(c); });
-
-    //input: shift
-    int shift_number;
-    std::cout << "Enter shift number: ";
-    std::cin >> shift_number;
     
-    return plaintext, shift_number;
+    return plaintext;
 }
 
 std::string encrypt (std::string plaintext, int shift_number, int lower, int upper){
@@ -113,16 +108,21 @@ std::string encrypt (std::string plaintext, int shift_number, int lower, int upp
     return ciphertext;
 }
 
-// TODO: add decrypt function
 
 int main () {
-    std::string plaintext = getInput();
+    std::string plaintext = capitalizeInput();
 
-    // defining alphabet as 'A-Z' in captial letters
+    int shift_number;
+    std::cout << "Enter shift number: ";
+    std::cin >> shift_number;
+
+    // defining alphabet range as 'A-Z' in captial letters
     int lower = 65; // ASCII: 'A'
     int upper = 90; // ASCII: 'Z'
 
     // encrypt the plaintext 
-    std::cout << "Your ciphertext: " << encrypt(plaintext, shift_number, lower, upper) << std::endl;
+    std::string ciphertext = encrypt(plaintext, shift_number, lower, upper);
+    std::cout << "Your ciphertext: " << ciphertext << std::endl;
+
 
 }
