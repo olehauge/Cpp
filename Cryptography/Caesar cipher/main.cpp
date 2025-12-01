@@ -131,37 +131,20 @@ std::string decrypt (std::string ciphertext, int shift_number, int lower, int up
 }
 
 int main () {
-    int program_mode;
-    std::cout << "Caesar cipher--choose 1 for encryption or 2 for decryption: ";
-    std::cin >> program_mode;
     
-    if (program_mode == 1) { // encrypt
-        int shift_number; 
-        
-    }
-    else if (program_mode == 2) { // decrypt
-
-    }
-    else {
-        std::cout << "Not a valid option.";
-    }
-
     std::string plaintext = capitalizeInput();
+    // std::string ciphertext = capitalizeInput();
 
-    int shift_number;
+    int shift_number; 
     std::cout << "Enter shift number: ";
     std::cin >> shift_number;
 
-    // defining alphabet range as 'A-Z' in captial letters
+    // Defining alphabet as 'A-Z' in ASCII 
     int lower = 65; // ASCII: 'A'
     int upper = 90; // ASCII: 'Z'
 
-    // encrypt the plaintext 
-    std::string ciphertext = encrypt(plaintext, shift_number, lower, upper);
-    std::cout << "Your ciphertext: " << ciphertext << std::endl;
-
-    std::cout << "The decrypted message: " << decrypt(ciphertext, shift_number, lower, upper) << std::endl;
-
-
+    std::cout << "Ciphertext: " << encrypt(plaintext, shift_number, lower, upper) << std::endl;
+    
+    // std::cout << "Plaintext: " << decrypt(ciphertext, shift_number, lower, upper);
 
 }
