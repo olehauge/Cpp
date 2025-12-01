@@ -56,20 +56,73 @@ Convert char to int:
     OR just work with the ASCII values for the cipher logic (?) 
     If so remember that CAPS and lowcase differ in values (by a lot)
     Would not need hash map? Just shift the ASCII value with the shiftNumber?
+    int wrapped_value = lower + (x - lower) % (upper - lower + 1);
+    - lower = A (ASCII)
+    - upper = Z (ASCII)
+    - x = any CAPITAL letter
+    // Adding char1 and char2 results in an int
+    int sum_of_chars = char1 + char2; 
+
+Convert int to char: 
+    int ascii_value = 65; // ASCII value for 'A'
+    char character = static_cast<char>(ascii_value); // character will be 'A'
+
+Clean the input: 
+- Ensure only capital letters
+    if (std::all_of(begin(line), end(line), std::isalpha))
+    {
+        std::cout << "its characters!" << std::endl;
+        break;
+    }
+    std::cout << "Error!" << std::endl;
+    
+    std::toupper
+    std::isupper
 */
 
 #include <iostream>
+#include <string>
+#include <algorithm>
+#include <cctype>
 
-void getInput(){
-
-}
-
-int main () {
+std::string getInput(){
     //input: plaintext
     std::string plaintext;
     std::cout << "Enter plaintext: ";
     std::cin >> plaintext;
-    std::cout << plaintext;
+    std::transform(plaintext.begin(), plaintext.end(), plaintext.begin(),
+                   [](unsigned char c){ return std::toupper(c); });
+
     //input: shift
-    //output: ciphertext
+    int shift_number;
+    std::cout << "Enter shift number: ";
+    std::cin >> shift_number;
+    
+    return plaintext, shift_number;
+}
+
+std::string encrypt (std::string plaintext, int shift_number, int lower, int upper){
+    std::string ciphertext; 
+
+    for (char c : plaintext) {
+        int shifted_ASCII = c + shift_number;
+        int cipher_number = lower + (shifted_ASCII - lower) % (upper - lower + 1);    
+        char cipher_char = static_cast<char>(cipher_number); 
+        ciphertext += cipher_char;
+    }
+    return ciphertext;
+}
+
+// TODO: add decrypt function
+
+int main () {
+    std::string plaintext = getInput();
+
+    // defining alphabet as 'A-Z' in captial letters
+    int lower = 65; // ASCII: 'A'
+    int upper = 90; // ASCII: 'Z'
+
+    // encrypt the plaintext 
+    std::cout << "Your ciphertext: " << encrypt(plaintext, shift_number, lower, upper) << std::endl;
+
 }
