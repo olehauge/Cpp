@@ -28,6 +28,8 @@ Decryption:
 2. Then read left to right. 
 */
 #include <iostream>
+#include <math.h>
+#include <vector>
 
 int main () {
   /*
@@ -51,10 +53,36 @@ int main () {
   */
   
   // Encryption
-  int key = 5;
   std::string plaintext = "PLAINTEXTMESSAGE";
-  char ciphertext[plaintext.length()];
+  std::cin >> plaintext;
+  std::string ciphertext;
+  int row = 4; //key + turn into input
+  int column = (plaintext.length() / row); //Scytale cipher uses the diameter (rows) as the key i.e, the rows and plaintext length determine the column number
+  std::vector<std::vector<char>> matrix(row, std::vector<char>(column, ' ')); // Declare matrix initiated by ' '. 
+  /*
+  PLAINTEXT = PLAINTEXTMESSAGE
+  KEY = 4 (ROWS)
+    0 1 2 3
+  0 P L A I   C0 = PNTS
+  1 N T E X   C1 = LTMA
+  2 T M E S   C2 = AEEG
+  3 S A G E   C3 = IXSE
+  CIPHERTEXT = PNTSLTMAAEEGIXSE (C0 + C1 + C2 + C3)
+  */
+  int counter = 0; 
+  for (int i = 0; i < row; ++i){
+    for (int j = 0; j < column; ++j){
+      matrix[i][j] = plaintext[counter];
+      std::cout << matrix[i][j] << " ";
+      ++counter; 
+    }
+    std::cout << std::endl;
+  }
 
-
-
+  for (int i = 0; i < column; ++i) {
+    for (int j = 0; j < row; ++j) {
+      ciphertext += matrix[j][i];
+    }
+  }
+  std::cout << std::endl << "Ciphertext: " << ciphertext << std::endl;
 }
