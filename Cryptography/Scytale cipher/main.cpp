@@ -28,22 +28,33 @@ Decryption:
 2. Then read left to right. 
 */
 #include <iostream>
-#include <cstring>
 
 int main () {
   /*
+  Encryption process: 
   1. Define a key
   2. Create a matrix
   3. Determine column direction
-  */
-    // plaintext
-    // get plaintext
-    int key = 4;
-    std::string plaintext = "PLAINTEXTMESSAGE";
-    char ciphertext[plaintext.length()];
+  4. Read columns
 
-    for (char c : plaintext) { 
-        
-    }
+  Decryption process: 
+  1. Reconstruct matrix
+  2. Determin column order
+  3. Fill matrix
+  4. Read rows
+
+  C++ implementation considerations: 
+  1. String opertations: std::string -> length(), operator[]
+  2. Matrix representaiton: std::vector<std::vector<char>>
+  3. Key ordering: std::map
+  4. Padding 
+  */
+  
+  // Encryption
+  int key = 5;
+  std::string plaintext = "PLAINTEXTMESSAGE";
+  char ciphertext[plaintext.length()];
+
+
 
 }
